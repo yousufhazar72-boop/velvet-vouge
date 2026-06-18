@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account - Velvet Vogue</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="accountContent"></div>
+
+<script>
+
+// Check if user logged in
+let user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+if(!user){
+    // NOT LOGGED IN → Show Register/Login Page
+    document.getElementById("accountContent").innerHTML = `
+        <div class="auth-container">
+        <div class="auth-box">
+            <h2>Create Account</h2>
+            <p>Please login or register</p>
+
+            <a href="login.html">
+                <button>Login / Register</button>
+            </a>
+        </div>
+        </div>
+    `;
+}
+else{
+    // LOGGED IN → Show Account Dashboard
+    document.getElementById("accountContent").innerHTML = `
+    
+    <!-- Header -->
+    <div class="account-header">
+        <img src="images/user.png" class="profile-pic">
+        <div>
+            <h3>Welcome, ${user.name}</h3>
+            <p>${user.email}</p>
+        </div>
+    </div>
+
+    <!-- Offers -->
+    <div class="offers">
+        <div class="offer-card">
+            <h3>Gems</h3>
+            <p>Up to 20% OFF</p>
+            <button>Collect</button>
+        </div>
+
+        <div class="offer-card">
+            <h3>Freebies</h3>
+            <p>Win prizes</p>
+            <button>Play</button>
+        </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="orders">
+        <h3>My Orders</h3>
+        <div class="order-icons">
+            <div>To Pay</div>
+            <div>To Ship</div>
+            <div>To Receive</div>
+            <div>To Review</div>
+            <div>Returns</div>
+        </div>
+    </div>
+
+    <!-- Points -->
+    <div class="points">
+        <div class="point-box">
+            <h4>My Points</h4>
+            <p>0</p>
+        </div>
+        <div class="point-box">
+            <h4>Payment</h4>
+            <p>Saved Cards</p>
+        </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="tools">
+        <div class="tool">Messages</div>
+        <div class="tool">Low Price</div>
+        <div class="tool">Pickup</div>
+        <div class="tool">Pay Later</div>
+    </div>
+
+    <!-- Logout -->
+    <button onclick="logout()" style="margin:20px;padding:10px;background:red;color:white;border:none;">Logout</button>
+
+    <!-- Bottom Nav -->
+    <div class="bottom-nav">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Messages</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html" class="active">Account</a>
+    </div>
+    `;
+}
+
+// Logout function
+function logout(){
+    localStorage.removeItem("loggedInUser");
+    alert("Logged out");
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>

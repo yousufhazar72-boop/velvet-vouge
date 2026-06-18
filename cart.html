@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Cart | Velvet Vogue</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2 class="cart-title">My Cart</h2>
+
+<div class="cart-container">
+
+    <!-- CART ITEM -->
+    <div class="cart-item" data-price="3500">
+        <input type="checkbox" class="cart-check" checked>
+
+        <img src="images/men1.jpg" class="cart-img">
+
+        <div class="cart-info">
+            <p class="cart-name">Men Casual Shirt Cotton Premium</p>
+            <p class="cart-price">Rs. 3,500</p>
+        </div>
+
+        <div class="cart-qty">
+            <button onclick="changeQty(this, -1)">-</button>
+            <span class="qty">1</span>
+            <button onclick="changeQty(this, 1)">+</button>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="cart-item" data-price="4800">
+    <input type="checkbox" class="cart-check" checked>
+
+    <img src="images/women1.jpg" class="cart-img">
+
+    <div class="cart-info">
+        <p class="cart-name">Women Summer Dress</p>
+        <p class="cart-price">Rs. 4,800</p>
+    </div>
+
+    <div class="cart-qty">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">1</span>
+        <button onclick="changeQty(this, 1)">+</button>
+    </div>
+</div>
+
+
+<!-- TOTAL BAR -->
+<div class="cart-bottom">
+    <p>Total: <b id="totalAmount">Rs. 0</b></p>
+    <button class="checkout-btn" onclick="goToCheckout()">Check Out</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
